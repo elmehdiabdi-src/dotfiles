@@ -15,9 +15,36 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 
-	--"tribela/vim-transparent",
+	"tribela/vim-transparent",
+
+	{
+		'kristijanhusak/vim-dadbod-ui',
+		dependencies = {
+			{ "Shougo/ddc.vim" },
+			{ "vim-denops/denops.vim" },
+			{ "hrsh7th/nvim-compe" },
+			{ "Shougo/deoplete.nvim" },
+			{ "haorenW1025/completion-nvim" },
+			{ 'tpope/vim-dadbod',                     lazy = true },
+			{ "kristijanhusak/vim-packager",          type = "opt" },
+			{ 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+		},
+		cmd = {
+			'DBUI',
+			'DBUIToggle',
+			'DBUIAddConnection',
+			'DBUIFindBuffer',
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+	},
+
+	"easymotion/vim-easymotion",
 
 	"alvan/vim-closetag",
+
 	"tpope/vim-commentary",
 
 	"glepnir/zephyr-nvim",
@@ -109,3 +136,32 @@ require('lsp')
 require('theme')
 require('mapping')
 require('treesitter')
+
+vim.cmd("map  <space> <Plug>(easymotion-bd-f)")
+
+vim.cmd(
+"autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })")
+
+
+
+-- vim.cmd("tnoremap <Esc> <C-\\><C-n>")
+
+-- buffers = {}
+
+-- vim.api.nvim_create_autocmd('BufEnter', {
+-- 	pattern = '*.term',
+-- 	callback = function()
+-- 		local source = vim.fn.expand("%")
+
+-- 		vim.cmd("bdelete " .. source)
+
+-- 		vim.cmd("hide")
+
+-- 		if buffers[source] == nil then
+-- 			vim.cmd("terminal")
+-- 			buffers[source] = vim.fn.expand("%:p")
+-- 		else
+-- 			vim.cmd("b " .. buffers[source])
+-- 		end
+-- 	end
+-- })
