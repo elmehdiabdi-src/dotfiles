@@ -9,4 +9,3 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 		vim.cmd("!sh " .. vim.fn.expand("%"))
 	end,
 })
-

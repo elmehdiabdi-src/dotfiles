@@ -1,3 +1,7 @@
+-- vim.opt.colorcolumn = "120"
+
+-- vim.cmd("set textwidth=120")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -16,10 +20,32 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 
 	"tpope/vim-dadbod",
+	{
+		"stevearc/conform.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			formatters_by_ft = {
+				cpp = { "clang-format" },
+				c = { "clang-format" },
+			},
+			formatters = {
+				["clang-format"] = {
+					command = "clang-format",
+					args = { "--assume-filename", "$FILENAME" },
+					stdin = true,
+				},
+			},
+			format_on_save = {
+				timeout_ms = 1500,
+				lsp_fallback = true,
+			},
+		},
+	},
 
 	"bytesnake/vim-graphical-preview",
 
 	"glepnir/lspsaga.nvim",
+
 	"zenbones-theme/zenbones.nvim",
 
 	"yonchu/accelerated-smooth-scroll",
