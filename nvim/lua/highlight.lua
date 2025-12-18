@@ -1,3 +1,7 @@
+function _G.get_treesitter_captures()
+	return vim.inspect(vim.treesitter.get_captures_at_cursor())
+end
+
 function _G.get_diagnostic_line_error()
 	local row, col = unpack(vim.api.nvim_win_get_cursor(0))
 	row = row - 1
@@ -16,12 +20,10 @@ function _G.get_diagnostic_line_error()
 end
 
 vim.o.statusline = table.concat({
-	" %f",                              -- filename
-	-- " %y",                              -- filetype
-	"%#Conditional#",                   -- filename
-	" %{v:lua.get_diagnostic_line_error()}", -- syntax→highlight group
-	-- " k%l:%c",                          -- line:column
-	-- " (%p%%)"                           -- percent through file
+	" %f",
+	" [%{v:lua.get_treesitter_captures()}]",
+	" %#Conditional#",
+	" %{v:lua.get_diagnostic_line_error()}",
 })
 
 vim.o.laststatus = 3
