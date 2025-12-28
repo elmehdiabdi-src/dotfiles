@@ -23,11 +23,10 @@ function Millionaire.setup()
 
 	vim.cmd('hi Identifier guifg=#c3e88d')
 
-	vim.cmd('hi Type guifg=White')
 
 	vim.cmd('hi Constant guifg=#d1423e')
 
-	vim.cmd('hi Keyword guifg=#ff5252')
+	vim.cmd('hi Keyword guifg=#fa3836')
 
 	vim.cmd('hi Function guifg=#ff6348')
 
@@ -39,7 +38,7 @@ function Millionaire.setup()
 
 	vim.cmd('hi Conditional guifg=#d1423e gui=bold')
 
-	vim.cmd('hi Directory guifg=#82aaff')
+	vim.cmd('hi Directory guifg=#f49514')
 
 	vim.cmd('hi goType guifg=Orange gui=bold')
 
@@ -48,12 +47,27 @@ function Millionaire.setup()
 	vim.cmd('hi @match.paren guifg=Green')
 
 	vim.cmd('hi @number guifg=#e55cf4')
-	vim.cmd('hi @boolean guifg=#82a9fe')
-	vim.cmd('hi @variable guifg=#ffcb8b')
-	vim.cmd('hi @variable.member guifg=#82aaff')
+	vim.cmd('hi @boolean guifg=#f49514')
+	vim.cmd('hi @variable.member guifg=#f49514')
 	vim.cmd('hi @variable.parameter guifg=#bec5d4')
-	vim.cmd('hi @variable.builtin guifg=#bec5d4')
-	vim.cmd('hi @property guifg=#3FD8D2')
+
+	vim.cmd('hi Type guifg=White')
+
+	vim.cmd('hi @variable guifg=#f49514')
+	vim.cmd('hi @property guifg=#cb4387')
+
+	vim.cmd('hi @type.builtin guifg=#5cc761')
+
+	vim.cmd('set cursorline')
+
+	vim.cmd('highlight Cursor guibg=#cef782')
+
+	vim.cmd('highlight CursorLine guifg=#60ea5f guibg=#043c0a')
+
+	vim.cmd('set guicursor=n-v-c:block-Cursor')
+	vim.cmd('set guicursor+=i:ver100-iCursor')
+	vim.cmd('set guicursor+=n-v-c:blinkon0')
+	vim.cmd('set guicursor+=i:blinkwait10')
 end
 
 return Millionaire
